@@ -1,4 +1,5 @@
 import invariant from 'invariant'
+import _ from 'lodash'
 
 const unwrappedMethods = [
   'constructor',
@@ -63,8 +64,8 @@ export default function createExtendable(base, copy, empty) {
   // Methods which will yield a Map and have to be wrapped before returning a result
   for (const key in base.prototype) {
     if (
-      !key.startsWith('__') &&
-      !key.startsWith('to') &&
+      !_.startsWith(key, '__') &&
+      !_.startsWith(key, 'to') &&
       unwrappedMethods.indexOf(key) === -1
     ) {
       const _originalMethod = base.prototype[key]
@@ -103,4 +104,3 @@ export default function createExtendable(base, copy, empty) {
 
   return proto
 }
-
