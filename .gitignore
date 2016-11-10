@@ -1,7 +1,6 @@
 # Node
 node_modules
 *.log
-lib/
 es/
 dist/
 npm-debug.log
